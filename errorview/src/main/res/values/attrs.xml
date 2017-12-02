@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ErrorView">
+        <attr name="Text1" format="string" localization="suggested" />
+        <attr name="Text2" format="string" localization="suggested" />
+        <attr name="ButtonText" format="string" localization="suggested" />
+        <attr name="TextColor1" format="color" />
+        <attr name="TextColor2" format="color" />
+        <attr name="IconColor" format="color" />
+        <attr name="Icon" format="reference" />
+    </declare-styleable>
+</resources>
