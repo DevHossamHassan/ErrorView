@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">ErrorView</string>
     <string name="error_default_text1">No Internet Connection</string>
-    <string name="error_default_text2">Please Try again</string>
+    <string name="error_default_text2">Please try again</string>
 </resources>
