@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        errorView =findViewById(R.id.errorView1);
+        errorView = findViewById(R.id.errorView1);
         //If the device is not connected to the internet show the error view
-        if(!Internet.haveNetworkConnection(this.getApplication())){
+        if (!Internet.haveNetworkConnection(this.getApplication())) {
             errorView.setVisibility(View.VISIBLE);
         }
     }

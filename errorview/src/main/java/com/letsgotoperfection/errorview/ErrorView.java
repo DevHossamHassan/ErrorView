@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -21,28 +22,30 @@ import android.widget.TextView;
  */
 
 public class ErrorView extends LinearLayout {
+    String TAG = "ErrorView";
     private String errorText1, errorText2;
     private @ColorInt
     int errorTextColor1, errorTextColor2, errorIconColor;
     @DrawableRes
     int errorIconId;
     private TextView textView1, textView2;
+
     public ErrorView(@NonNull Context context) {
         super(context);
     }
 
     public ErrorView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
     public ErrorView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         if (isInEditMode()) return;
-        init(context,attrs);
+        init(context, attrs);
     }
 
-    private void init(Context context,  @Nullable AttributeSet attrs) {
+    private void init(Context context, @Nullable AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ErrorView, 0, 0);
         errorText1 = a.getString(R.styleable.ErrorView_Text1);
         errorText2 = a.getString(R.styleable.ErrorView_Text2);
@@ -63,20 +66,24 @@ public class ErrorView extends LinearLayout {
             inflater.inflate(R.layout.error_view, this, true);
         }
 
-        textView1 = (TextView) getChildAt(1);
+        RelativeLayout relativeLayout = (RelativeLayout) getChildAt(0);
+        LinearLayout linearLayout = (LinearLayout) relativeLayout.getChildAt(0);
+
+        textView1 = (TextView) linearLayout.getChildAt(1);
         if (errorText1 != null && !errorText1.isEmpty()) {
             textView1.setText(errorText1);
         }
         textView1.setTextColor(errorTextColor1);
 
-        textView2 = (TextView) getChildAt(2);
+        textView2 = (TextView) linearLayout.getChildAt(2);
         if (errorText2 != null && !errorText2.isEmpty()) {
             textView2.setText(errorText2);
         }
 
         textView2.setTextColor(errorTextColor2);
 
-        ImageView mImage = (ImageView) getChildAt(0);
+        ImageView mImage = (ImageView) linearLayout.getChildAt(0);
+
         mImage.setImageResource(errorIconId);
         mImage.setColorFilter(errorIconColor, android.graphics.PorterDuff.Mode.SRC_IN);
 
