@@ -38,4 +38,7 @@ Step 2. Add the dependency
         android:layout_height="match_parent">
 
     </com.letsgotoperfection.errorview.ErrorView>
-```
+``
+ToDo: 
+- Add a call to action button and customization APIs
+`
